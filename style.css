@@ -59,11 +59,12 @@ header h1 {
 
 .next {
     width: 400px;
-    height: 50px;
+    height: 70px;
+    font-size: 30px;
     background-color: rgb(241, 182, 70);
     border-radius: 10px;
-    margin: 50px auto;
+    margin: 0px auto;
     text-align: center;
-    line-height: 50px;
+    line-height: 70px;
     cursor: pointer;
 }
