@@ -1,6 +1,6 @@
 'usr strict';
 
-const words = [
+var words = [
     {'en': 'stingy', 'ja': 'ケチ'},
     {'en': 'frugal', 'ja': '倹約家'},
     {'en': 'hassle', 'ja': '面倒くさい'},
@@ -21,13 +21,18 @@ const words = [
     {'en': 'not my cup of tea', 'ja': '好みではない'},
 ]
 
+var discardPile = [];
+var currentSelection = 0;
+
+
 const card = document.getElementById('card');
 const cardFront = document.getElementById('card-front');
 const cardBack = document.getElementById('card-back');
 const nextBtn = document.getElementById('next');
+const successBtn = document.getElementById("success");
+const numberSuccess = document.getElementById("numCorrect");
 
 card.addEventListener('click', () => {
-    // card.classList.add('open');
     if(card.className === 'card') {
         card.classList.add('open');
     } else {
@@ -40,8 +45,20 @@ nextBtn.addEventListener('click', () => {
     next();
 });
 
+
+successBtn.addEventListener('click', () => {
+    if (words.length <= 1) {
+        alert("No more cards left");
+    }
+    discardPile.push(words.splice(currentSelection, 1));
+    numberSuccess.innerHTML = "Number correct: " + discardPile.length;
+    next();
+});
+
 function next() {
+    card.classList = 'card';
     const num = Math.floor(Math.random() * words.length);
+    currentSelection = num;
     cardFront.innerHTML = words[num]['en'];
     cardBack.innerHTML = words[num]['ja'];
 }
