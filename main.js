@@ -1,6 +1,6 @@
 'usr strict';
 
-var words = [
+let words = [
     {'en': 'stingy', 'ja': 'ケチ'},
     {'en': 'frugal', 'ja': '倹約家'},
     {'en': 'hassle', 'ja': '面倒くさい'},
@@ -21,8 +21,8 @@ var words = [
     {'en': 'not my cup of tea', 'ja': '好みではない'},
 ]
 
-var discardPile = [];
-var currentSelection = 0;
+let discardPile = [];
+let currentSelection = 0;
 
 
 const card = document.getElementById('card');
@@ -30,6 +30,7 @@ const cardFront = document.getElementById('card-front');
 const cardBack = document.getElementById('card-back');
 const nextBtn = document.getElementById('next');
 const successBtn = document.getElementById("success");
+const checkBtn = document.getElementById("check");
 const numberSuccess = document.getElementById("numCorrect");
 
 card.addEventListener('click', () => {
@@ -55,6 +56,7 @@ successBtn.addEventListener('click', () => {
     next();
 });
 
+
 function next() {
     card.classList = 'card';
     const num = Math.floor(Math.random() * words.length);
@@ -62,10 +64,3 @@ function next() {
     cardFront.innerHTML = words[num]['en'];
     cardBack.innerHTML = words[num]['ja'];
 }
-
-
-
-
-
-
-
